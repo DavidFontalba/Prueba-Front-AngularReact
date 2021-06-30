@@ -4,5 +4,6 @@ export interface AstronomicPic {
     media_type: string,
     title: string,
     url: string,
-    copyright?: string
+    copyright?: string,
+    sanitized: boolean
   }

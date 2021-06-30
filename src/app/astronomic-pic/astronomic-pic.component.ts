@@ -12,9 +12,10 @@ export class AstronomicPicComponent implements OnInit {
     explanation: "",
     media_type: "",
     title: "",
-    url: ""
+    url: "",
+    sanitized: false
   };
-  
+
   constructor() {
 
   }
