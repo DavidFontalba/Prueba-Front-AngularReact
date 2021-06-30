@@ -1,7 +1,17 @@
 <h1>{{title}}</h1>
 
-<div class="listOfCards">
-    <div class="card" *ngFor="let pic of myPics">
-        <app-astronomic-pic [ap]="pic"></app-astronomic-pic>
+<div *ngIf="dashboard; else elseBlock" class="listOfCards">
+    <div class="card" *ngFor="let pic of myPics" (click)="switchInfo(pic)">
+        <app-astronomic-pic [ap]="pic" ></app-astronomic-pic>
     </div>
 </div>
+
+<ng-template #elseBlock>
+    <div class="innerCard">
+        <button (click)="switchInfo('back')">Go back</button>
+        <h2>{{infoToShow.title}}</h2>
+        <div *ngIf="!infoToShow.sanitized; else elseBlock"><img [src]='infoToShow.url'/></div>
+        <ng-template #elseBlock><iframe [src]='infoToShow.url' frameborder="0" allowfullscreen></iframe></ng-template>
+        <p> {{infoToShow.explanation}}</p>
+        </div>
+</ng-template>

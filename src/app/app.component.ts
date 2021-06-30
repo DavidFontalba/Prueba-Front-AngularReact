@@ -12,7 +12,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent {
   title = 'Astronomic Picture of the Day';
   endpoint = 'https://api.nasa.gov/planetary/apod?api_key=zdUP8ElJv1cehFM0rsZVSQN7uBVxlDnu4diHlLSb';
-  myPics: any[] = []
+  myPics: any[] = [];
+  dashboard = true;
+  infoToShow: any = "";
 
   
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer) {
@@ -21,7 +23,7 @@ export class AppComponent {
   extractData(day: Date) {
     return this.http.get<any>(`${this.endpoint}&date=${formatDate(day, 'yyyy-MM-dd', 'en')}`);
   }
-  
+
   insertData(day: Date) {
     this.extractData(day).subscribe(res => {
       res.sanitized = false;
@@ -60,5 +62,13 @@ export class AppComponent {
     this.insertData(day);
 
     console.log(this.myPics);
+  }
+
+  switchInfo(picObject: any) {
+    this.dashboard = false;
+    this.infoToShow = picObject
+    if (picObject === "back") { 
+      this.dashboard = true; 
+    }
   }
 }
