@@ -1,6 +1,6 @@
 <div class="innerCard">
 <h2>{{ap.title}}</h2>
-<div *ngIf="!ap.sanitized; else elseBlock"><img [src]='ap.url'/></div>
-<ng-template #elseBlock><iframe [src]='ap.url' frameborder="0" allowfullscreen></iframe></ng-template>
-<p> {{ap.date}}</p>
+<div *ngIf="!ap.sanitized; else videoBlock"><img [src]='ap.url'/></div>
+<ng-template #videoBlock><iframe [src]='ap.url' frameborder="0" allowfullscreen></iframe></ng-template>
+<p>{{ap.date}}</p>
 </div>

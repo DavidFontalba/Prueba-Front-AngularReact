@@ -16,7 +16,7 @@ export class AppComponent {
   dashboard = true;
   infoToShow: any = "";
 
-  
+
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer) {
   }
 
@@ -38,37 +38,15 @@ export class AppComponent {
   ngOnInit(): void {
     let day = new Date();
 
-    //pic of today
-    this.insertData(day);
-
-    //pic of yesterday
-    day.setDate(day.getDate()-1);
-    this.insertData(day);
-
-    //pic of 2 days ago
-    day.setDate(day.getDate()-1);
-    this.insertData(day);
-
-    //pic of 3 days ago
-    day.setDate(day.getDate()-1);
-    this.insertData(day);
-
-    //pic of 4 days ago
-    day.setDate(day.getDate()-1);
-    this.insertData(day);
-
-    //pic of 5 days ago
-    day.setDate(day.getDate()-1);
-    this.insertData(day);
-
-    console.log(this.myPics);
+    for (let i = 0; i < 6; i++) {
+      this.insertData(day);
+      day.setDate(day.getDate() - 1);
+    }
   }
 
   switchInfo(picObject: any) {
     this.dashboard = false;
     this.infoToShow = picObject
-    if (picObject === "back") { 
-      this.dashboard = true; 
-    }
+    if (picObject === "back") this.dashboard = true;
   }
 }

@@ -24,6 +24,12 @@ img, iframe {
   height: 250px;
 }
 
+button {
+  height: 30px;
+  width: 100px;
+  font-size: 20px;
+}
+
 .listOfCards {
   display: grid;
   grid-template-rows: auto auto;
